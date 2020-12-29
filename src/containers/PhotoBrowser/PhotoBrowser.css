@@ -1,0 +1,15 @@
+.PhotoBrowserContainer {
+    text-align: center;
+    margin: 10px 10px 10px 10px;
+    background-color: lightgray;
+    display: flex;
+}
+
+.AlbumsContainer {
+    flex: 1;
+    background-color: darkgray;
+}
+
+.ThumbnailsContainer {
+    flex: 4;
+}
