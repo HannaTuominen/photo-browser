@@ -1,8 +1,8 @@
 import React from 'react';
-import Auxiliary from "../../../hoc/Auxiliary";
+import Auxiliary from "../../../../hoc/Auxiliary";
 
-const imageInfo = (props) => {
-  console.log(props.info);
+const imageInfo = props => {
+  // console.log(props.info);
   return (
     <Auxiliary>
       <div>

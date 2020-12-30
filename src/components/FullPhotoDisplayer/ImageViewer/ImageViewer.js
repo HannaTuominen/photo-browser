@@ -1,10 +1,10 @@
 import React from 'react';
-import Auxiliary from "../../hoc/Auxiliary";
+import Auxiliary from "../../../hoc/Auxiliary";
 import ImageInfo from "./ImageInfo/ImageInfo";
 import ImageCarousel from "./ImageCarousel/ImageCarousel";
 
-const imageViewer = (props) => {
-  console.log(props.activeImage);
+const imageViewer = props => {
+  //console.log(props.activeImage);
 
   return (
     <Auxiliary>
@@ -12,7 +12,7 @@ const imageViewer = (props) => {
         <ImageCarousel activePhoto={props.activeImage}/>
       </div>
       <div>
-      <ImageInfo info={props.activeImage}/>
+        <ImageInfo info={props.activeImage}/>
       </div>
     </Auxiliary>
   );

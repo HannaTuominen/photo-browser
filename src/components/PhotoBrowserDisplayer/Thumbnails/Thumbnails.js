@@ -1,7 +1,8 @@
 import React from 'react';
 import Thumbnail from "./Thumbnail/Thumbnail";
 import './Thumbnails.css';
-const thumbnails = (props) => {
+
+const thumbnails = props => {
   let thumbnails = props.thumbnails.map(thumbnail => {
     return (
         <Thumbnail

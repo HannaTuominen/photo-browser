@@ -3,7 +3,7 @@ import './Modal.css';
 import Auxiliary from "../../../hoc/Auxiliary";
 import Backdrop from "../Backdrop/Backdrop";
 
-const modal = (props) => (
+const modal = props => (
   <Auxiliary>
     <Backdrop show={props.show} clicked={props.closeModal}/>
     <div
