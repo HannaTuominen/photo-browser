@@ -7,6 +7,8 @@ const thumbnails = (props) => {
         <Thumbnail
           key={thumbnail.id}
           thumbnail={thumbnail.thumbnailUrl}
+          id={thumbnail.id}
+          showImageViewer={props.showImageViewer}
         />
       )
   });

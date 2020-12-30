@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import axios from "axios";
 
 import './PhotoBrowser.css';
-import ThumbnailsList from "../../components/ignore/ThumbnailsList/ThumbnailsList";
 import Thumbnails from "../../components/Thumbnails/Thumbnails";
+import Modal from "../../components/UI/Modal/Modal";
+import Auxiliary from "../../hoc/Auxiliary";
+import ImageViewer from "../../components/ImageViewer/ImageViewer";
 
 class PhotoBrowser extends Component {
   state = {
     photos: [],
-    albums: []
+    albums: [],
+    active: {},
+    showImageViewer: false
   };
 
   //QuickFix for the https problem with jsonplaceholder
@@ -32,16 +36,37 @@ class PhotoBrowser extends Component {
       } );
   }
 
+  showImageViewerHandler = (clickedImageId) => {
+    console.log(clickedImageId);
+
+    const allPhotos = this.state.photos;
+    let index = allPhotos.findIndex(photo => photo.id === clickedImageId);
+    let newActiveImage = allPhotos[index];
+
+    this.setState({showImageViewer: true, active: newActiveImage});
+  };
+
+  closeModalHandler = () => {
+    this.setState({showImageViewer: false});
+  };
+
   render() {
     return (
-      <div className="PhotoBrowserContainer">
-        <div className="AlbumsContainer">
-          Albums
+      <Auxiliary>
+        <Modal show={this.state.showImageViewer} closeModal={this.closeModalHandler}>
+          <ImageViewer activeImage={this.state.active}/>
+        </Modal>
+        <div className="PhotoBrowserContainer">
+          <div className="AlbumsContainer">
+            Albums
+          </div>
+          <div className="ThumbnailsContainer">
+            <Thumbnails
+              thumbnails={this.state.photos}
+              showImageViewer={this.showImageViewerHandler}/>
+          </div>
         </div>
-        <div className="ThumbnailsContainer">
-          <Thumbnails thumbnails={this.state.photos}/>
-        </div>
-      </div>
+      </Auxiliary>
     );
   }
 }

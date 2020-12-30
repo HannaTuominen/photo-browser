@@ -1,0 +1,9 @@
+.CarouselImage {
+    max-width:100%;
+    height: auto;
+}
+
+.Carousel {
+    text-align: center;
+    display: block;
+}
