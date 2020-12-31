@@ -10,10 +10,10 @@ const App = props => {
     <div>
       <Layout>
         <Route exact path="/">
-          <Redirect to="/gallery" />
+          <Redirect to="/gallery/album/1" />
         </Route>
-        <Route path="/gallery" component={PhotoBrowser}/>
-        <Route path="/gallery/:id" component={PhotoDisplayer} />
+        <Route path="/gallery/album/:albumId" component={PhotoBrowser}/>
+        <Route path="/gallery/album/:albumId/image/:imageId" component={PhotoDisplayer} />
       </Layout>
     </div>
   );

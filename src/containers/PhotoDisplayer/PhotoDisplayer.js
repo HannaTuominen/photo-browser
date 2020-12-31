@@ -8,14 +8,15 @@ import FullPhotoDisplayer from "../../components/FullPhotoDisplayer/FullPhotoDis
 const PhotoDisplayer = props => {
   const [active, setActive] = useState({});
   const [showImageViewer, setShowImageViewer] = useState(true);
+  const {albumId, imageId} = props.match.params;
 
   useEffect(async () => {
-    const {id} = props.match.params;
-    //console.log(id);
+    // const {albumId, imageId} = props.match.params;
+    console.log(imageId + "asdasd");
 
-    await axios.get( process.env.REACT_APP_BACK_URL + '/albums/1/photos?id=' + id)
+    await axios.get( process.env.REACT_APP_BACK_URL + '/albums/' + albumId + '/photos?id=' + imageId)
       .then( response => {
-        //console.log(response.data);
+        console.log(response.data);
         setActive(updateUrls(response.data[0]));
         setShowImageViewer(true);
       } );
@@ -24,6 +25,7 @@ const PhotoDisplayer = props => {
 
   const updateUrls = (photos) => {
     let newPhotos = photos;
+    // console.log(photos);
 
     newPhotos.url = newPhotos.url.slice(0,4) + newPhotos.url.slice(5);
     newPhotos.thumbnailUrl= newPhotos.thumbnailUrl.slice(0, 4) + newPhotos.thumbnailUrl.slice(5);
@@ -32,7 +34,7 @@ const PhotoDisplayer = props => {
 
   const closeModalHandler = () => {
     setShowImageViewer(false);
-    props.history.push("/gallery");
+    props.history.push("/gallery/album/" + albumId);
   };
 
   return (

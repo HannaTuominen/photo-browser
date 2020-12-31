@@ -10,6 +10,7 @@ const thumbnails = props => {
           thumbnail={thumbnail.thumbnailUrl}
           id={thumbnail.id}
           showImageViewer={props.showImageViewer}
+          albumId={thumbnail.albumId}
         />
       )
   });
