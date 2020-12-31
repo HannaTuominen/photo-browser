@@ -4,38 +4,35 @@ import axios from "axios";
 import '../../components/PhotoBrowserDisplayer/PhotoBrowserDisplayer.css';
 import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 import PhotoBrowserDisplayer from "../../components/PhotoBrowserDisplayer/PhotoBrowserDisplayer";
+import Albums from "../../components/PhotoBrowserDisplayer/Albums/Albums";
 
 const PhotoBrowser = props => {
 
   const [photos, setPhotos] = useState([]);
   const [albums, setAlbums] = useState([]);
-  const [selectedAlbum, setSelectedAlbum] = useState(1);
-  const {albumId, imageId} = props.match.params;
+  const [hasError, setHasError] = useState(false);
 
-  useEffect( () => {
-    fetchAlbums();
-    fetchPhotos(albumId);
-  }, []);
+  const {albumId} = props.match.params;
 
-  async function fetchAlbums() {
-    await axios.get( process.env.REACT_APP_BACK_URL + '/users/1/albums')
-      //?id=1
+  useEffect(  () => {
+     fetchAlbums();
+     fetchPhotos(albumId);
+  }, [albumId]); // follow the albumId to fetch correct photos based on the selected album
+
+   function fetchAlbums() {
+     axios.get( process.env.REACT_APP_BACK_URL + '/users/1/albums')
       .then( response => {
         console.log(response.data);
         setAlbums(response.data);
-      } );
-  };
+      }).catch(() => setHasError(true));
+   }
 
-  async function fetchPhotos(albumId) {
-    console.log("selected album at photo fetch: " + selectedAlbum);
-    await axios.get( process.env.REACT_APP_BACK_URL + '/albums/'+ albumId +'/photos')
-      //?id=1
+   function fetchPhotos(albumId) {
+     axios.get( process.env.REACT_APP_BACK_URL + '/albums/'+ albumId +'/photos')
       .then( response => {
-        //console.log(response.data);
         setPhotos(updateUrls(response.data));
-        setSelectedAlbum(albumId);
-      } );
-  }
+      }).catch(() => setHasError(true));
+   }
 
   //QuickFix for the https problem with jsonplaceholder
   const updateUrls = (photos) => {
@@ -49,29 +46,29 @@ const PhotoBrowser = props => {
   };
 
   const ShowImageViewerHandler = (album, clickedImageId) => {
-    //console.log(clickedImageId);
-
-    // const allPhotos = photos;
-    // let index = allPhotos.findIndex(photo => photo.id === clickedImageId);
-    // let newActiveImage = allPhotos[index];
     props.history.push("/gallery/album/"+ album + "/image/" + clickedImageId);
   };
 
   const changeAlbum = (clickedAlbumId) => {
-    console.log(clickedAlbumId + " adasdasd");
-    setSelectedAlbum(clickedAlbumId);
     props.history.push("/gallery/album/"+ clickedAlbumId);
-
-    fetchPhotos(clickedAlbumId);
   };
 
     return (
       <Auxiliary>
-        <PhotoBrowserDisplayer
-          thumbnails={photos}
-          albums={albums}
-          showImageViewer={ShowImageViewerHandler}
-          changeAlbum={changeAlbum}/>
+        {hasError? <div>There was an error</div>
+          :
+          <Auxiliary>
+            <div className="AlbumsContainer">
+              <Albums
+                albums={albums}
+                changeAlbum={changeAlbum}/>
+            </div>
+            <PhotoBrowserDisplayer
+              thumbnails={photos}
+              showImageViewer={ShowImageViewerHandler}/>
+          </Auxiliary>
+        }
+
       </Auxiliary>
     );
 };

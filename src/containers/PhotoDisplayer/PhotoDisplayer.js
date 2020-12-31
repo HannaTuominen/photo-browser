@@ -7,21 +7,22 @@ import FullPhotoDisplayer from "../../components/FullPhotoDisplayer/FullPhotoDis
 
 const PhotoDisplayer = props => {
   const [active, setActive] = useState({});
-  const [showImageViewer, setShowImageViewer] = useState(true);
+  const [showImageViewer, setShowImageViewer] = useState(false);
   const {albumId, imageId} = props.match.params;
+  const [hasError, setHasError] = useState(false);
 
-  useEffect(async () => {
-    // const {albumId, imageId} = props.match.params;
-    console.log(imageId + "asdasd");
+  useEffect( () => {
+      fetchPhotos();
+  }, []);
 
-    await axios.get( process.env.REACT_APP_BACK_URL + '/albums/' + albumId + '/photos?id=' + imageId)
+  function fetchPhotos() {
+     axios.get( process.env.REACT_APP_BACK_URL + '/albums/' + albumId + '/photos?id=' + imageId)
       .then( response => {
         console.log(response.data);
         setActive(updateUrls(response.data[0]));
         setShowImageViewer(true);
-      } );
-
-  }, []);
+      }).catch(() => setHasError(true));
+  }
 
   const updateUrls = (photos) => {
     let newPhotos = photos;
@@ -39,11 +40,14 @@ const PhotoDisplayer = props => {
 
   return (
     <Auxiliary>
-      <FullPhotoDisplayer
-        show={showImageViewer}
-        closeModal={closeModalHandler}
-        activeImage={active}
-      />
+      {hasError ? <div>There was an error</div>
+        :
+        <FullPhotoDisplayer
+          show={showImageViewer}
+          closeModal={closeModalHandler}
+          activeImage={active}
+        />
+      }
     </Auxiliary>
   );
 };

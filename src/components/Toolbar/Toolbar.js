@@ -6,7 +6,7 @@ const toolbar = props => (
   <header className="Toolbar">
     <div>
       <div>
-        Logo
+        <h4>Hanna's beautiful photo gallery</h4>
       </div>
     </div>
   </header>
