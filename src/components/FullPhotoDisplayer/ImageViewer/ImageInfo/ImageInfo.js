@@ -6,8 +6,14 @@ const imageInfo = props => {
   return (
     <Auxiliary>
       <div>
-        <h1>Title: {props.info.title}</h1>
-        <h1>Album: {props.info.albumId}</h1>
+        <div>
+          <h4>Title:</h4>
+          <label>{props.info.title}</label>
+        </div>
+        <div>
+          <h4>Album:</h4>
+          <label> {props.info.albumId}</label>
+        </div>
       </div>
     </Auxiliary>
   );

@@ -6,7 +6,7 @@ const imageCarousel = props => {
   //console.log(props.activePhoto);
   return (
     <div className="Carousel">
-      <img src={props.activePhoto.url} className="CarouselImage"/>
+      <img src={props.activePhoto.url} className="CarouselImage" alt={props.activePhoto.title}/>
     </div>
   );
 };
