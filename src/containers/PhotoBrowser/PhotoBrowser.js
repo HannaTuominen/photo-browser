@@ -30,7 +30,7 @@ const PhotoBrowser = props => {
    function fetchPhotos(albumId) {
      axios.get( process.env.REACT_APP_BACK_URL + '/albums/'+ albumId +'/photos')
       .then( response => {
-        setPhotos(updateUrls(response.data));
+        setPhotos(response.data);
       }).catch(() => setHasError(true));
    }
 

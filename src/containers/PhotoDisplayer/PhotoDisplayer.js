@@ -19,7 +19,7 @@ const PhotoDisplayer = props => {
      axios.get( process.env.REACT_APP_BACK_URL + '/albums/' + albumId + '/photos?id=' + imageId)
       .then( response => {
         console.log(response.data);
-        setActive(updateUrls(response.data[0]));
+        setActive(response.data[0]);
         setShowImageViewer(true);
       }).catch(() => setHasError(true));
   }
