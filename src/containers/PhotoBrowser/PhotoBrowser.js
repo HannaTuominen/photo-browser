@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 
 import '../../components/PhotoBrowserDisplayer/PhotoBrowserDisplayer.css';
-import Auxiliary from "../../hoc/Auxiliary";
+import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 import PhotoBrowserDisplayer from "../../components/PhotoBrowserDisplayer/PhotoBrowserDisplayer";
 
 const PhotoBrowser = props => {
@@ -17,7 +17,7 @@ const PhotoBrowser = props => {
     fetchPhotos(albumId);
   }, []);
 
-  async function fetchAlbums(selectedAlbum) {
+  async function fetchAlbums() {
     await axios.get( process.env.REACT_APP_BACK_URL + '/users/1/albums')
       //?id=1
       .then( response => {
@@ -67,11 +67,11 @@ const PhotoBrowser = props => {
 
     return (
       <Auxiliary>
-            <PhotoBrowserDisplayer
-              thumbnails={photos}
-              albums={albums}
-              showImageViewer={ShowImageViewerHandler}
-              changeAlbum={changeAlbum}/>
+        <PhotoBrowserDisplayer
+          thumbnails={photos}
+          albums={albums}
+          showImageViewer={ShowImageViewerHandler}
+          changeAlbum={changeAlbum}/>
       </Auxiliary>
     );
 };

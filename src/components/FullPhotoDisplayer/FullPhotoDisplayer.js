@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 
 import Modal from "../UI/Modal/Modal";
-import Auxiliary from "../../hoc/Auxiliary";
+import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 import ImageViewer from "./ImageViewer/ImageViewer";
 
 
-const fullPhotoDisplayer = props => {
+const fullPhotoDisplayer = (props) => {
   //console.log(props.activeImage);
   return (
     <Auxiliary>

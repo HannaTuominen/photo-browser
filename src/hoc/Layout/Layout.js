@@ -1,11 +1,12 @@
 import React from 'react';
 import './Layout.css';
-import Auxiliary from "../../hoc/Auxiliary";
+import Auxiliary from "../Auxiliary/Auxiliary";
+import Toolbar from "../../components/Toolbar/Toolbar";
 
 const layout = props => (
   <Auxiliary>
-    <div>Photo Browser App</div>
-    <main className="Layout">
+    <Toolbar/>
+    <main className="LayoutContent">
       {props.children}
     </main>
   </Auxiliary>

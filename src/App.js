@@ -1,7 +1,7 @@
 import React from "react";
 
 import PhotoBrowser from "./containers/PhotoBrowser/PhotoBrowser";
-import Layout from "./components/Layout/Layout";
+import Layout from "./hoc/Layout/Layout";
 import {Redirect, Route} from "react-router-dom";
 import PhotoDisplayer from "./containers/PhotoDisplayer/PhotoDisplayer";
 

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 
-import Auxiliary from "../../hoc/Auxiliary";
+import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 import FullPhotoDisplayer from "../../components/FullPhotoDisplayer/FullPhotoDisplayer";
 
 

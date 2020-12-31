@@ -1,5 +1,5 @@
 import React from 'react';
-import Auxiliary from "../../../hoc/Auxiliary";
+import Auxiliary from "../../../hoc/Auxiliary/Auxiliary";
 import ImageInfo from "./ImageInfo/ImageInfo";
 import ImageCarousel from "./ImageCarousel/ImageCarousel";
 

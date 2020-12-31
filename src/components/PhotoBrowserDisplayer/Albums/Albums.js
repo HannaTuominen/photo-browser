@@ -1,6 +1,7 @@
 import React from 'react';
 import Album from "./Album/Album";
 
+import './Albums.css';
 
 const albums = props => {
   let albums = props.albums.map(albums => {
@@ -15,8 +16,13 @@ const albums = props => {
   });
 
   return (
-    <div className="ThumbnailsRow">
-      {albums}
+    <div className="Albums">
+      <div className="AlbumsText">
+        <h3>Albums</h3>
+      </div>
+      <div className="AlbumsList">
+        {albums}
+      </div>
     </div>
   );
 };

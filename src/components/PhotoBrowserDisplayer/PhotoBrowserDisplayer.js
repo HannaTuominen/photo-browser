@@ -5,7 +5,7 @@ import React, {useEffect, useState} from 'react';
 import './PhotoBrowserDisplayer.css';
 import Albums from "./Albums/Albums";
 
-const fullPhotoDisplayer = props => {
+const photoBrowserDisplayer = props => {
   console.log(props.albums);
 
   return (
@@ -24,4 +24,4 @@ const fullPhotoDisplayer = props => {
   );
 };
 
-export default fullPhotoDisplayer;
+export default photoBrowserDisplayer;
