@@ -3,6 +3,7 @@ import axios from "axios";
 
 import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 import FullPhotoDisplayer from "../../components/FullPhotoDisplayer/FullPhotoDisplayer";
+import Modal from "../../components/UI/Modal/Modal";
 
 
 const PhotoDisplayer = props => {
@@ -12,15 +13,19 @@ const PhotoDisplayer = props => {
   const [hasError, setHasError] = useState(false);
 
   useEffect( () => {
-      fetchPhotos();
+    fetchPhotos();
   }, []);
 
   function fetchPhotos() {
      axios.get( process.env.REACT_APP_BACK_URL + '/albums/' + albumId + '/photos?id=' + imageId)
       .then( response => {
         console.log(response.data);
-        setActive(response.data[0]);
-        setShowImageViewer(true);
+        if(response.data[0] === undefined) {
+          setHasError(true);
+        } else {
+          setActive(response.data[0]);
+          setShowImageViewer(true);
+        }
       }).catch(() => setHasError(true));
   }
 
@@ -40,7 +45,10 @@ const PhotoDisplayer = props => {
 
   return (
     <Auxiliary>
-      {hasError ? <div>There was an error</div>
+      {hasError ?
+        <Modal show={true} closeModal={closeModalHandler}>
+          <h1>There was an error</h1>
+        </Modal>
         :
         <FullPhotoDisplayer
           show={showImageViewer}

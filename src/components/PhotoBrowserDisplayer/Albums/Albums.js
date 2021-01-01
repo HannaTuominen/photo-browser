@@ -5,18 +5,31 @@ import './Albums.css';
 
 const albums = props => {
   let albums = props.albums.map(albums => {
-    return (
-      <Album
-        key={albums.id}
-        title={albums.title}
-        id={albums.id}
-        changeAlbum={props.changeAlbum}
-      />
-    )
+
+    if(albums.id === props.activeAlbum.id) {
+      return (
+        <Album
+          key={albums.id}
+          title={albums.title}
+          id={albums.id}
+          changeAlbum={props.changeAlbum}
+          type={"active"}
+        />)
+    } else {
+      return (
+        <Album
+          key={albums.id}
+          title={albums.title}
+          id={albums.id}
+          changeAlbum={props.changeAlbum}
+          type={"inactive"}
+        />
+      )
+    }
   });
 
   return (
-    <div className="Albums">
+    <div>
       <div className="AlbumsText">
         <h3>Albums</h3>
       </div>

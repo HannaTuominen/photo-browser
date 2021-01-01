@@ -3,7 +3,8 @@
     /*!*adjust to padding*!*/
     box-sizing: border-box;
     cursor: pointer;
-    z-index: 20;
+    border: 1px solid #eee;
+    box-shadow: 0 1px 1px #ccc;
 }
 
 .Thumbnail:hover {
@@ -11,5 +12,4 @@
 }
 
 .ThumbnailImage {
-    z-index: -10;
 }

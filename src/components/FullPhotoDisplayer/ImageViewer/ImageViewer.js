@@ -4,10 +4,8 @@ import ImageInfo from "./ImageInfo/ImageInfo";
 import ImageCarousel from "./ImageCarousel/ImageCarousel";
 
 const imageViewer = props => {
-  //console.log(props.activeImage);
-
   return (
-    <Auxiliary>
+    <Auxiliary >
       <div>
         <ImageCarousel activePhoto={props.activeImage}/>
       </div>

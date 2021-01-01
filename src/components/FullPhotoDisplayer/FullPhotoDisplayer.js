@@ -6,7 +6,6 @@ import ImageViewer from "./ImageViewer/ImageViewer";
 
 
 const fullPhotoDisplayer = (props) => {
-  //console.log(props.activeImage);
   return (
     <Auxiliary>
       <Modal show={props.show} closeModal={props.closeModal}>
