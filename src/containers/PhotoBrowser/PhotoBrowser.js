@@ -1,12 +1,10 @@
 import React, {useEffect, useState, useCallback} from 'react';
 import axios from "axios";
 
-import './PhotoBrowser.css';
 import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
-import PhotoBrowserDisplayer from "../../components/PhotoBrowserDisplayer/PhotoBrowserDisplayer";
-import Albums from "../../components/PhotoBrowserDisplayer/Albums/Albums";
+import PhotoBrowserDisplayer from "../../components/ThumbnailsDisplayer/ThumbnailsDisplayer";
 import ErrorModal from "../../components/UI/ErrorModal/ErrorModal";
-
+import AlbumsDisplayer from "../../components/AlbumsDisplayer/AlbumsDisplayer";
 
 const PhotoBrowser = props => {
 
@@ -27,10 +25,11 @@ const PhotoBrowser = props => {
         setActiveAlbum(response.data[albumId -1]);
         setIsLoadingAlbums(false);
       }).catch((error) => setHasError(error.message));
-  }, [albumId]);
+  }, []);
 
   useEffect(  () => {
     setIsLoadingPhotos(true);
+
     axios.get( process.env.REACT_APP_BACK_URL + '/albums/'+ albumId +'/photos')
       .then( response => {
         setPhotos(response.data);
@@ -68,18 +67,17 @@ const PhotoBrowser = props => {
           {hasError}
         </ErrorModal>}
           <div>
-            <div className="AlbumsContainer">
-              <Albums
-                albums={albums}
-                changeAlbum={changeAlbum}
-                activeAlbum={activeAlbum}
-                isLoading={isLoadingAlbums}/>
-            </div>
-              <PhotoBrowserDisplayer
-                thumbnails={photos}
-                showImageViewer={ShowImageViewerHandler}
-                isLoading={isLoadingPhotos}
-              />
+            <AlbumsDisplayer
+              albums={albums}
+              changeAlbum={changeAlbum}
+              activeAlbum={activeAlbum}
+              isLoading={isLoadingAlbums}
+            />
+            <PhotoBrowserDisplayer
+              thumbnails={photos}
+              showImageViewer={ShowImageViewerHandler}
+              isLoading={isLoadingPhotos}
+            />
           </div>
       </Auxiliary>
     );

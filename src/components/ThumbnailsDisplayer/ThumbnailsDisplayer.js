@@ -2,10 +2,10 @@ import Thumbnails from "./Thumbnails/Thumbnails";
 
 import React from 'react';
 
-import './PhotoBrowserDisplayer.css';
+import './ThumbnailsDisplayer.css';
 import LoadingIndicator from "../UI/LoadingIndicator/LoadingIndicator";
 
-const photoBrowserDisplayer = props => {
+const thumbnailsDisplayer = props => {
   return (
         <div className="ThumbnailsContainer">
           {props.isLoading ?
@@ -17,4 +17,4 @@ const photoBrowserDisplayer = props => {
   );
 };
 
-export default photoBrowserDisplayer;
+export default thumbnailsDisplayer;

@@ -8,7 +8,7 @@ const ErrorModal = React.memo(props => {
         <Modal show={props.show} closeModal={props.closeModal}>
           <h2>An Error Occurred!</h2>
           <p>{props.children}</p>
-          <button type="button" closeModal={props.closeModal}>
+          <button type="button" onClick={props.closeModal}>
             Okay
           </button>
         </Modal>

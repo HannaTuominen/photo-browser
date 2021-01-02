@@ -16,12 +16,11 @@ const PhotoDisplayer = props => {
 
   useEffect( () => {
     setIsLoading(true);
-
     axios.get( process.env.REACT_APP_BACK_URL + '/albums/' + albumId + '/photos?id=' + imageId)
       .then( response => {
         console.log(response.data);
         if(response.data[0] === undefined) {
-          setHasError(true);
+          setHasError("Invalid image path");
         } else {
           setActive(response.data[0]);
           setShowImageViewer(true);
@@ -43,18 +42,18 @@ const PhotoDisplayer = props => {
 
   return (
     <Auxiliary>
-      {hasError &&
+      {hasError ?
       <ErrorModal
         show={hasError}
         closeModal={clearError}>
         {hasError}
-      </ErrorModal>}
+      </ErrorModal> :
         <FullPhotoDisplayer
           show={showImageViewer}
-          closeModal={closeModalHandler}
+          close={closeModalHandler}
           activeImage={active}
           isLoading={isLoading}
-        />
+        />}
       }
     </Auxiliary>
   );
