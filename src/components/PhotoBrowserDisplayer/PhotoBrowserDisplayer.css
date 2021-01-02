@@ -1,33 +1,6 @@
-.PhotoBrowserContainer {
-    text-align: center;
-    /*margin: 0px 0px 0px 0px;*/
-    background-color: #41B3A3;
-    /*display: flex;*/
-}
-
-.AlbumsContainer {
-    /*flex: 1;*/
-    background-color: #eee;
-    position: fixed;
-    /*top: 56px;*/
-    top: 8vh;
-    width: 20vh;
-    /*max-width: 70%;*/
-    height: 92vh;
-    overflow-y: scroll;
-    /*z-index: 200;*/
-    /*left: 0;*/
-    /*!*top: 0;*!*/
-    padding: 0px 16px 10px 16px;
-    /*!*adjust to padding*!*/
-    box-sizing: border-box;
-}
-
 .ThumbnailsContainer {
-    /*flex: 6;*/
     left: 20vh;
     top: 8vh;
     position: absolute;
-    background-color:  #fff;
-
+    background-color: #fff;
 }

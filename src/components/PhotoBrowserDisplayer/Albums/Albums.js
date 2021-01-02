@@ -2,6 +2,7 @@ import React from 'react';
 import Album from "./Album/Album";
 
 import './Albums.css';
+import LoadingIndicator from "../../UI/LoadingIndicator/LoadingIndicator";
 
 const albums = props => {
   let albums = props.albums.map(albums => {
@@ -31,7 +32,10 @@ const albums = props => {
   return (
     <div>
       <div className="AlbumsText">
-        <h3>Albums</h3>
+        {props.isLoading ? <LoadingIndicator height={"50px"}/> :
+        <div>
+          <h3>Albums</h3>
+        </div>}
       </div>
       <div className="AlbumsList">
         {albums}

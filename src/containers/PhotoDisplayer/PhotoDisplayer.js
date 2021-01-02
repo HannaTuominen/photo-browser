@@ -4,20 +4,20 @@ import axios from "axios";
 import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 import FullPhotoDisplayer from "../../components/FullPhotoDisplayer/FullPhotoDisplayer";
 import Modal from "../../components/UI/Modal/Modal";
+import ErrorModal from "../../components/UI/ErrorModal/ErrorModal";
 
 
 const PhotoDisplayer = props => {
   const [active, setActive] = useState({});
   const [showImageViewer, setShowImageViewer] = useState(false);
   const {albumId, imageId} = props.match.params;
-  const [hasError, setHasError] = useState(false);
+  const [hasError, setHasError] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect( () => {
-    fetchPhotos();
-  }, []);
+    setIsLoading(true);
 
-  function fetchPhotos() {
-     axios.get( process.env.REACT_APP_BACK_URL + '/albums/' + albumId + '/photos?id=' + imageId)
+    axios.get( process.env.REACT_APP_BACK_URL + '/albums/' + albumId + '/photos?id=' + imageId)
       .then( response => {
         console.log(response.data);
         if(response.data[0] === undefined) {
@@ -26,34 +26,34 @@ const PhotoDisplayer = props => {
           setActive(response.data[0]);
           setShowImageViewer(true);
         }
-      }).catch(() => setHasError(true));
-  }
-
-  const updateUrls = (photos) => {
-    let newPhotos = photos;
-    // console.log(photos);
-
-    newPhotos.url = newPhotos.url.slice(0,4) + newPhotos.url.slice(5);
-    newPhotos.thumbnailUrl= newPhotos.thumbnailUrl.slice(0, 4) + newPhotos.thumbnailUrl.slice(5);
-    return newPhotos;
-  };
+        setIsLoading(false)
+      }).catch((error) => setHasError(error.message));
+  }, [albumId, imageId]);
 
   const closeModalHandler = () => {
     setShowImageViewer(false);
     props.history.push("/gallery/album/" + albumId);
   };
 
+  const clearError = () => {
+    setHasError(false);
+    setIsLoading(false);
+    props.history.push("/gallery/album/" + albumId);
+  };
+
   return (
     <Auxiliary>
-      {hasError ?
-        <Modal show={true} closeModal={closeModalHandler}>
-          <h1>There was an error</h1>
-        </Modal>
-        :
+      {hasError &&
+      <ErrorModal
+        show={hasError}
+        closeModal={clearError}>
+        {hasError}
+      </ErrorModal>}
         <FullPhotoDisplayer
           show={showImageViewer}
           closeModal={closeModalHandler}
           activeImage={active}
+          isLoading={isLoading}
         />
       }
     </Auxiliary>

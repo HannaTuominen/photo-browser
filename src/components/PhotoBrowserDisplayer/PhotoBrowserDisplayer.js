@@ -3,17 +3,17 @@ import Thumbnails from "./Thumbnails/Thumbnails";
 import React from 'react';
 
 import './PhotoBrowserDisplayer.css';
+import LoadingIndicator from "../UI/LoadingIndicator/LoadingIndicator";
 
 const photoBrowserDisplayer = props => {
-  // console.log(props.albums);
   return (
-      <div className="PhotoBrowserContainer">
         <div className="ThumbnailsContainer">
+          {props.isLoading ?
+            <div className="PhotoLoader"> <LoadingIndicator height={"80px"}/></div>:
           <Thumbnails
             thumbnails={props.thumbnails}
-            showImageViewer={props.showImageViewer}/>
+            showImageViewer={props.showImageViewer}/>}
         </div>
-      </div>
   );
 };
 

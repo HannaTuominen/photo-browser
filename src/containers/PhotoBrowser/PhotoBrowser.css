@@ -1,0 +1,11 @@
+.AlbumsContainer {
+    background-color: #eee;
+    position: fixed;
+    top: 8vh;
+    width: 20vh;
+    height: 92vh;
+    overflow-y: scroll;
+    padding: 0 16px 10px 16px;
+    box-sizing: border-box;
+    flex: 1;
+}
