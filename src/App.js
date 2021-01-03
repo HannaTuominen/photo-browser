@@ -15,9 +15,15 @@ const App = props => {
       <Layout>
         <Suspense fallback={<div style={{marginTop: '100px'}}> <LoadingIndicator height={"100px"}/></div>}>
         <Route exact path="/">
-          <Redirect to="/gallery/albums/"/>
+          <Redirect to="/gallery/albums"/>
         </Route>
-        <Route path="/gallery/albums/" render={(props) => <PhotoBrowser {...props}/>}/>
+          <Route exact path="/gallery/albums/">
+            <Redirect to="/gallery/albums"/>
+          </Route>
+          <Route exact path="/gallery">
+            <Redirect to="/gallery/albums"/>
+          </Route>
+        <Route path="/gallery/albums" render={(props) => <PhotoBrowser {...props}/>}/>
         <Route path="/gallery/albums/:albumId/image/:imageId" render={(props) => <PhotoDisplayer {...props}/>} /></Suspense>
       </Layout>
     </div>

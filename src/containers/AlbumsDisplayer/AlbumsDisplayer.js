@@ -25,11 +25,12 @@ const AlbumsDisplayer = props => {
 
         let albumId = null;
         let currentPath = history.location.pathname;
+
         if(Object.keys(activeAlbum).length === 0 && currentPath !== "/gallery/albums/") {
-          albumId = parseInt(currentPath.replace("/gallery/albums/", ""))
+          albumId = parseInt(currentPath.replace("/gallery/albums/", ""));
+          const index = response.data.findIndex((album) => album.id  === albumId);
+          setActiveAlbum(response.data[index]);
         }
-        const index = response.data.findIndex((album) => album.id  === albumId);
-        setActiveAlbum(response.data[index]);
 
         setIsLoadingAlbums(false);
       }).catch((error) => setHasError(error.message));
