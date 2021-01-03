@@ -35,7 +35,7 @@ const ThumbnailsDisplayer = props => {
     setHasError(false);
     setIsLoadingPhotos(false);
 
-    history.push("/gallery/albums/");
+    history.push("/gallery/albums");
   };
   return (
     <Auxiliary>

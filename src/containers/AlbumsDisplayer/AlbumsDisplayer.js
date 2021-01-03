@@ -1,7 +1,7 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './AlbumsDisplayer.css';
 
-import {useParams, useHistory, useLocation} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
 import axios from "axios";
 import ErrorModal from "../../components/UI/ErrorModal/ErrorModal";
@@ -26,12 +26,11 @@ const AlbumsDisplayer = props => {
         let albumId = null;
         let currentPath = history.location.pathname;
 
-        if(Object.keys(activeAlbum).length === 0 && currentPath !== "/gallery/albums/") {
+        if(Object.keys(activeAlbum).length === 0 && currentPath !== "/gallery/albums") {
           albumId = parseInt(currentPath.replace("/gallery/albums/", ""));
           const index = response.data.findIndex((album) => album.id  === albumId);
           setActiveAlbum(response.data[index]);
         }
-
         setIsLoadingAlbums(false);
       }).catch((error) => setHasError(error.message));
 
@@ -51,7 +50,7 @@ const AlbumsDisplayer = props => {
     setHasError(false);
     setIsLoadingAlbums(false);
 
-    props.history.push("/gallery/albums/");
+    props.history.push("/gallery/albums");
   };
 
   return (
