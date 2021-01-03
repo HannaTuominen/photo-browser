@@ -6,7 +6,6 @@ import LoadingIndicator from "../../UI/LoadingIndicator/LoadingIndicator";
 
 const albums = props => {
   let albums = props.albums.map(albums => {
-
     if(albums.id === props.activeAlbum.id) {
       return (
         <Album
@@ -31,12 +30,6 @@ const albums = props => {
 
   return (
     <div>
-      <div className="AlbumsText">
-        {props.isLoading ? <LoadingIndicator height={"50px"}/> :
-        <div>
-          <h3>Albums</h3>
-        </div>}
-      </div>
       <div className="AlbumsList">
         {albums}
       </div>

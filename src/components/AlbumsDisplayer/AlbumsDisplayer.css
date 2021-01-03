@@ -9,3 +9,18 @@
     box-sizing: border-box;
     flex: 1;
 }
+
+.AlbumsTitleContainer {
+    display: flex;
+}
+
+.AlbumsTitle {
+    flex: 1;
+    text-align: center;
+}
+
+.AlbumsLoader {
+    flex: 1;
+}
+
+

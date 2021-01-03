@@ -8,12 +8,15 @@ const thumbnailsDisplayer = props => {
   return (
     <div className="AlbumsContainer">
       {props.isLoading ?
-         <LoadingIndicator height={"50px"}/>:
+      <div  className="AlbumsLoader"><LoadingIndicator height={"50px"}/></div> :
+      <div className="AlbumsTitleContainer">
+        <div className="AlbumsTitle"><h3>Albums</h3></div>
+      </div>}
         <Albums
           albums={props.albums}
           changeAlbum={props.changeAlbum}
           activeAlbum={props.activeAlbum}
-          isLoading={props.isLoading}/>}
+          isLoading={props.isLoading}/>
     </div>
   );
 };

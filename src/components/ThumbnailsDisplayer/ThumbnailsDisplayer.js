@@ -4,16 +4,19 @@ import React from 'react';
 
 import './ThumbnailsDisplayer.css';
 import LoadingIndicator from "../UI/LoadingIndicator/LoadingIndicator";
+import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 
 const thumbnailsDisplayer = props => {
   return (
-        <div className="ThumbnailsContainer">
-          {props.isLoading ?
-            <div className="PhotoLoader"> <LoadingIndicator height={"80px"}/></div>:
-          <Thumbnails
-            thumbnails={props.thumbnails}
-            showImageViewer={props.showImageViewer}/>}
-        </div>
+    <Auxiliary>
+    {props.isLoading ?
+    <div className="PhotoLoader"> <LoadingIndicator height={"100px"}/></div>:
+    <div className="ThumbnailsContainer">
+        <Thumbnails
+          thumbnails={props.thumbnails}
+          showImageViewer={props.showImageViewer}/>
+    </div>}
+    </Auxiliary>
   );
 };
 
