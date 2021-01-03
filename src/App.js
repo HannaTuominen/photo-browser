@@ -1,6 +1,6 @@
 import React, {Suspense} from "react";
 
-import PhotoBrowser from "./containers/PhotoBrowser/PhotoBrowser";
+import PhotoBrowser from "./components/PhotoBrowser/PhotoBrowser";
 import Layout from "./hoc/Layout/Layout";
 import {Redirect, Route} from "react-router-dom";
 import LoadingIndicator from "./components/UI/LoadingIndicator/LoadingIndicator";

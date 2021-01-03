@@ -2,7 +2,6 @@ import React from 'react';
 import Album from "./Album/Album";
 
 import './Albums.css';
-import LoadingIndicator from "../../UI/LoadingIndicator/LoadingIndicator";
 
 const albums = props => {
   let albums = props.albums.map(albums => {
