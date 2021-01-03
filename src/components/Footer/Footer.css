@@ -4,27 +4,29 @@
     bottom:0;
     /*right:0;*/
     /*height: 100%;*/
-    background-color: #41B3A3;
+    background-color: #0288d1;
     /*height: 20px;*/
     text-align: center;
     height: 40px;
     z-index: 1;
+    color: white;
 }
 
 .FooterLayoutWelcome {
     position:absolute;
     left: 20vh;
     text-align: center;
-    background-color: #41B3A3;
+    background-color: #0288d1;
     bottom:0;
     right:0;
     height: 40px;
     z-index: 1;
+    color: white;
 }
 
 
 .FooterHome {
-    background-color: #41B3A3;
+    background-color: #0288d1;
     text-align: center;
     position:fixed;
     left:0;
@@ -32,4 +34,5 @@
     right:0;
     height: 40px;
     z-index: 1;
+    color: white;
 }

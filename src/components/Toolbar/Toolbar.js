@@ -3,6 +3,7 @@ import React from 'react';
 import {useHistory} from 'react-router-dom';
 
 import './Toolbar.css';
+import NavigationItems from "./NavigationItems/NavigationItems";
 
 const Toolbar = props => {
 
@@ -12,18 +13,14 @@ const Toolbar = props => {
     history.push("/");
   };
 
-  const getToGallery = () => {
-    history.push("/gallery/albums");
-  };
-
   return (
     <header className="Toolbar">
     <div onClick={getToHome} className="ToolbarLink">
       <h4>Home</h4>
     </div>
-    <div className="ToolbarLink" onClick={getToGallery}>
-      <h4>Photos</h4>
-    </div>
+    <nav>
+      <NavigationItems/>
+    </nav>
   </header>
 )};
 

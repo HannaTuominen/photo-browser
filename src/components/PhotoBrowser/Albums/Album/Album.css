@@ -8,24 +8,26 @@
 
 .Active {
     width: 100%;
-    padding: 5px;
+    padding: 2px;
     text-align: center;
-    border: 1px solid #000;
+    /*border: 1px solid #000;*/
     box-shadow: 0 1px 1px #ccc;
-    margin: 2px auto;
+    /*margin: 2px auto;*/
     box-sizing: border-box;
     cursor: pointer;
-    background-color: white;
+    background-color: #02679E;
+    color: white;
 }
 
 .Inactive {
     width: 100%;
-    padding: 5px;
+    padding: 2px;
     text-align: center;
-    border: 1px solid #eee;
+    /*border: 1px solid #eee;*/
     box-shadow: 0 1px 1px #ccc;
     margin: 2px auto;
     box-sizing: border-box;
-    background-color: cadetblue;
+    background-color: #43A4D9;
     cursor: pointer;
+    color: white;
 }

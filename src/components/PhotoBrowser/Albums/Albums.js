@@ -28,11 +28,9 @@ const albums = props => {
   });
 
   return (
-    <div>
       <div className="AlbumsList">
         {albums}
       </div>
-    </div>
   );
 };
 

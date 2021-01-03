@@ -7,20 +7,11 @@ const album = props => {
 
   switch (props.type) {
     case ('active'):
-      thumbnail =
-        <div className="AlbumCover">
-          <div onClick={() => props.changeAlbum(props.id)} className="Active" >
-            <h3>{props.id}</h3>
-          </div>
-        </div>;
+      thumbnail =<div onClick={() => props.changeAlbum(props.id)} className="Active" ><h3>{props.id}</h3></div>;
       break;
     case ('inactive'):
       thumbnail =
-        <div className="AlbumCover">
-          <div onClick={() => props.changeAlbum(props.id)} className="Inactive" >
-            <h3>{props.id}</h3>
-          </div>
-        </div>;
+          <div onClick={() => props.changeAlbum(props.id)} className="Inactive" ><h3>{props.id}</h3></div>;
       break;
     default:
       thumbnail = null;

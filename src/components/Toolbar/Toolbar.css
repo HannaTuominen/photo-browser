@@ -1,26 +1,25 @@
 .Toolbar {
-    height: 8vh;
+    height: 56px;
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #41B3A3;
+    background-color: #0288d1;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
     box-sizing: border-box;
     z-index: 90;
-    border: 1px solid #000;
+    /*border: 1px solid #000;*/
     box-shadow: 0 1px 1px #ccc;
+    color: white;
+
+
 }
 
 .ToolbarLink {
     cursor: pointer;
-    padding: 5px;
-    box-sizing: border-box;
-}
-
-.ToolbarLink:hover {
-    box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
+    /*padding: 5px;*/
+    /*box-sizing: border-box;*/
 }
