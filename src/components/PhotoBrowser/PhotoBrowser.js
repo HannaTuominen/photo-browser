@@ -7,7 +7,7 @@ import {Route, Switch} from "react-router-dom";
 import PhotoDisplayer from "../../containers/PhotoDisplayer/PhotoDisplayer";
 
 import './PhotoBrowser.css';
-import AlbumsWelcome from "../AlbumsWelcome/AlbumsWelcome";
+import AlbumsWelcome from "./AlbumsWelcome/AlbumsWelcome";
 
 const PhotoBrowser = props => {
 
