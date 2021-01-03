@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 
 import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 import ThumbnailsDisplayer from "../../containers/ThumbnailsDisplayer/ThumbnailsDisplayer";
 import AlbumsDisplayer from "../../containers/AlbumsDisplayer/AlbumsDisplayer";
+import {Route} from "react-router-dom";
 
 const PhotoBrowser = props => {
 
@@ -10,7 +11,7 @@ const PhotoBrowser = props => {
       <Auxiliary>
           <div>
             <AlbumsDisplayer/>
-            <ThumbnailsDisplayer/>
+            <Route path="/gallery/albums/:albumId" render={(props) => <ThumbnailsDisplayer {...props} />}/>
           </div>
       </Auxiliary>
     );

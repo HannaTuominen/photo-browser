@@ -32,13 +32,13 @@ const PhotoDisplayer = props => {
 
   const closeModalHandler = () => {
     setShowImageViewer(false);
-    props.history.push("/gallery/album/" + albumId);
+    props.history.push("/gallery/albums/" + albumId);
   };
 
   const clearError = () => {
     setHasError(false);
     setIsLoading(false);
-    props.history.push("/gallery/album/" + albumId);
+    props.history.push("/gallery/albums/" + albumId);
   };
 
   return (

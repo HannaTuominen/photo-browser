@@ -1,17 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './AlbumsDisplayer.css';
 
-import {useParams, useHistory} from 'react-router-dom';
+import {useParams, useHistory, useLocation} from 'react-router-dom';
 
 import axios from "axios";
 import ErrorModal from "../../components/UI/ErrorModal/ErrorModal";
 import LoadingIndicator from "../../components/UI/LoadingIndicator/LoadingIndicator";
 import Albums from "../../components/PhotoBrowser/Albums/Albums";
 
-
 const AlbumsDisplayer = props => {
 
-  const {albumId} = useParams();
   const history = useHistory();
 
   const [albums, setAlbums] = useState([]);
@@ -24,9 +22,18 @@ const AlbumsDisplayer = props => {
     axios.get( process.env.REACT_APP_BACK_URL + '/users/1/albums/')
       .then( response => {
         setAlbums(response.data);
-        setActiveAlbum(response.data[albumId - 1]);
+
+        let albumId = null;
+        let currentPath = history.location.pathname;
+        if(Object.keys(activeAlbum).length === 0 && currentPath !== "/gallery/albums/") {
+          albumId = parseInt(currentPath.replace("/gallery/albums/", ""))
+        }
+        const index = response.data.findIndex((album) => album.id  === albumId);
+        setActiveAlbum(response.data[index]);
+
         setIsLoadingAlbums(false);
       }).catch((error) => setHasError(error.message));
+
   }, []);
 
   const changeAlbum = (clickedAlbumId) => {
@@ -36,15 +43,14 @@ const AlbumsDisplayer = props => {
     const selectedAlbum = currentAlbums[index];
 
     setActiveAlbum(selectedAlbum);
-    history.push("/gallery/album/"+ clickedAlbumId);
+    history.push("/gallery/albums/"+ clickedAlbumId);
   };
-
 
   const clearError = () => {
     setHasError(false);
     setIsLoadingAlbums(false);
 
-    props.history.push("/gallery/album/");
+    props.history.push("/gallery/albums/");
   };
 
   return (

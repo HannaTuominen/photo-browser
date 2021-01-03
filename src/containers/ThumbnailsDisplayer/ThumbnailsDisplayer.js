@@ -7,6 +7,7 @@ import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 import axios from "axios";
 import {useParams , useHistory} from "react-router-dom";
 import LoadingIndicator from "../../components/UI/LoadingIndicator/LoadingIndicator";
+import ErrorModal from "../../components/UI/ErrorModal/ErrorModal";
 
 const ThumbnailsDisplayer = props => {
 
@@ -27,17 +28,23 @@ const ThumbnailsDisplayer = props => {
   }, [albumId]); // follow the albumId to fetch correct photos based on the selected album
 
   const ShowImageViewerHandler = (album, clickedImageId) => {
-    history.push("/gallery/album/"+ album + "/image/" + clickedImageId);
+    history.push("/gallery/albums/"+ album + "/image/" + clickedImageId);
   };
 
   const clearError = () => {
     setHasError(false);
     setIsLoadingPhotos(false);
 
-    history.push("/gallery/album/");
+    history.push("/gallery/albums/");
   };
   return (
     <Auxiliary>
+      {hasError &&
+      <ErrorModal
+        show={hasError}
+        closeModal={clearError}>
+        {hasError}
+      </ErrorModal>}
     {isLoadingPhotos ?
     <div className="PhotoLoader"> <LoadingIndicator height={"100px"}/></div>:
     <div className="ThumbnailsContainer">
