@@ -14,7 +14,7 @@ const albumsWelcome = props => {
       </div>
     </div>
       <div>
-        <Footer footerPlace={"LayoutWelcome"}/>
+        <Footer footerPlace={"FooterLayoutWelcome"}/>
       </div>
     </div>
   )};

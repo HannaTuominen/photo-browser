@@ -52,7 +52,7 @@ const ThumbnailsDisplayer = props => {
         <Thumbnails
           thumbnails={photos}
           showImageViewer={ShowImageViewerHandler}/>
-      <Footer footerPlace={"Layout"}/>
+      <Footer footerPlace={"FooterLayout"}/>
     </div>}
 
 

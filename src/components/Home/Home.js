@@ -10,7 +10,7 @@ const home = props => (
       <h2>Welcome to the site!</h2>
       <label>This site uses <a href="http://jsonplaceholder.typicode.com/">JSONPlaceholder</a>.</label>
     </div>
-    <Footer footerPlace={""}/>
+    <Footer footerPlace={"FooterHome"}/>
   </Auxiliary>
 
 );
