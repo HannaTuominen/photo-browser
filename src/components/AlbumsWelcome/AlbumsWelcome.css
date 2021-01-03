@@ -1,0 +1,11 @@
+.AlbumsWelcomeContainer {
+    left: 20vh;
+    top: 8vh;
+    position: absolute;
+    background-color: #fff;
+}
+.HelpText {
+    padding: 16px 16px;
+    /*!*adjust to padding*!*/
+    box-sizing: border-box;
+}

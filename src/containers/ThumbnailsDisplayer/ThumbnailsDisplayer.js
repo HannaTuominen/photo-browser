@@ -5,7 +5,7 @@ import React, {useEffect, useState} from 'react';
 import './ThumbnailsDisplayer.css';
 import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 import axios from "axios";
-import {useParams , useHistory} from "react-router-dom";
+import {useParams, useHistory} from "react-router-dom";
 import LoadingIndicator from "../../components/UI/LoadingIndicator/LoadingIndicator";
 import ErrorModal from "../../components/UI/ErrorModal/ErrorModal";
 
@@ -14,7 +14,7 @@ const ThumbnailsDisplayer = props => {
   const [photos, setPhotos] = useState([]);
   const [hasError, setHasError] = useState(false);
   const [isLoadingPhotos, setIsLoadingPhotos] = useState(false);
-  //
+
   const {albumId} = useParams();
   const history = useHistory();
 
@@ -34,9 +34,9 @@ const ThumbnailsDisplayer = props => {
   const clearError = () => {
     setHasError(false);
     setIsLoadingPhotos(false);
-
     history.push("/gallery/albums");
   };
+
   return (
     <Auxiliary>
       {hasError &&
@@ -52,6 +52,7 @@ const ThumbnailsDisplayer = props => {
           thumbnails={photos}
           showImageViewer={ShowImageViewerHandler}/>
     </div>}
+
     </Auxiliary>
   );
 };

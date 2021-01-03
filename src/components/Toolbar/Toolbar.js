@@ -4,8 +4,6 @@ import {useHistory} from 'react-router-dom';
 
 import './Toolbar.css';
 
-
-
 const Toolbar = props => {
 
   const history = useHistory();
