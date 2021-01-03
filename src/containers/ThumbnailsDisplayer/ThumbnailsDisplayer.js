@@ -8,6 +8,7 @@ import axios from "axios";
 import {useParams, useHistory} from "react-router-dom";
 import LoadingIndicator from "../../components/UI/LoadingIndicator/LoadingIndicator";
 import ErrorModal from "../../components/UI/ErrorModal/ErrorModal";
+import Footer from "../../components/Footer/Footer";
 
 const ThumbnailsDisplayer = props => {
 
@@ -51,7 +52,9 @@ const ThumbnailsDisplayer = props => {
         <Thumbnails
           thumbnails={photos}
           showImageViewer={ShowImageViewerHandler}/>
+      <Footer footerPlace={"Layout"}/>
     </div>}
+
 
     </Auxiliary>
   );

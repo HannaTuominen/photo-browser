@@ -12,7 +12,16 @@ const footer = props => {
           </div>
         </Auxiliary>
       )
-    } else {
+    } else if(props.footerPlace === "LayoutWelcome") {
+      return (
+        <Auxiliary>
+          <div className="FooterLayoutWelcome">
+            <div><p>Hanna's beautiful photo gallery</p></div>
+          </div>
+        </Auxiliary>
+      )
+    }
+    else {
       return (
         <Auxiliary>
           <div className="FooterHome">
