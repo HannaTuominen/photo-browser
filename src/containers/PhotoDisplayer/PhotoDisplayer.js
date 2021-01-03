@@ -3,16 +3,17 @@ import axios from "axios";
 
 import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 import FullPhotoDisplayer from "../../components/FullPhotoDisplayer/FullPhotoDisplayer";
-import Modal from "../../components/UI/Modal/Modal";
 import ErrorModal from "../../components/UI/ErrorModal/ErrorModal";
+import {useParams} from "react-router-dom";
 
 
 const PhotoDisplayer = props => {
   const [active, setActive] = useState({});
   const [showImageViewer, setShowImageViewer] = useState(false);
-  const {albumId, imageId} = props.match.params;
   const [hasError, setHasError] = useState();
   const [isLoading, setIsLoading] = useState(false);
+
+  const {albumId, imageId} = useParams();
 
   useEffect( () => {
     setIsLoading(true);

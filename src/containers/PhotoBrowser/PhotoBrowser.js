@@ -1,8 +1,10 @@
-import React, {useEffect, useState, useCallback} from 'react';
+import React, {useEffect, useState} from 'react';
+import {useParams} from 'react-router-dom';
+
 import axios from "axios";
 
 import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
-import PhotoBrowserDisplayer from "../../components/ThumbnailsDisplayer/ThumbnailsDisplayer";
+import ThumbnailsDisplayer from "../../components/ThumbnailsDisplayer/ThumbnailsDisplayer";
 import ErrorModal from "../../components/UI/ErrorModal/ErrorModal";
 import AlbumsDisplayer from "../../components/AlbumsDisplayer/AlbumsDisplayer";
 
@@ -15,14 +17,14 @@ const PhotoBrowser = props => {
   const [isLoadingAlbums, setIsLoadingAlbums] = useState(false);
   const [isLoadingPhotos, setIsLoadingPhotos] = useState(false);
 
-  const {albumId} = props.match.params;
+  const {albumId} = useParams();
 
   useEffect(() => {
     setIsLoadingAlbums(true);
     axios.get( process.env.REACT_APP_BACK_URL + '/users/1/albums/')
       .then( response => {
         setAlbums(response.data);
-        setActiveAlbum(response.data[albumId -1]);
+        setActiveAlbum(response.data[albumId - 1]);
         setIsLoadingAlbums(false);
       }).catch((error) => setHasError(error.message));
   }, []);
@@ -73,7 +75,7 @@ const PhotoBrowser = props => {
               activeAlbum={activeAlbum}
               isLoading={isLoadingAlbums}
             />
-            <PhotoBrowserDisplayer
+            <ThumbnailsDisplayer
               thumbnails={photos}
               showImageViewer={ShowImageViewerHandler}
               isLoading={isLoadingPhotos}
