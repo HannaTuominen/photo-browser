@@ -3,7 +3,7 @@
     display: flex;
     -ms-flex-wrap: wrap; /* IE10 */
     flex-wrap: wrap;
-    padding: 16px 16px;
+    padding: 5px 16px;
     /*!*adjust to padding*!*/
     box-sizing: border-box;
 }
