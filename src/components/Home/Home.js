@@ -8,7 +8,8 @@ const home = props => (
   <Auxiliary>
     <div className="HomeContainer">
       <h2>Welcome to the site!</h2>
-      <label>This site uses <a href="http://jsonplaceholder.typicode.com/">JSONPlaceholder</a>.</label>
+      <span>This site is a photo browser made with React. </span>
+      <span>It uses <a href="http://jsonplaceholder.typicode.com/">JSONPlaceholder</a> as an API backend.</span>
     </div>
     <Footer footerPlace={"FooterHome"}/>
   </Auxiliary>
