@@ -12,9 +12,24 @@
     transition: all 0.3s ease-out;
 }
 
+@media (min-width: 320px) {
+    .Modal {
+        width: 300px;
+        left: calc(50% - 150px);
+    }
+}
+
+@media (min-width: 500px) {
+    .Modal {
+        width: 490px;
+        left: calc(50% - 240px);
+    }
+}
+
 @media (min-width: 900px) {
     .Modal {
         width: 800px;
         left: calc(50% - 400px);
     }
 }
+

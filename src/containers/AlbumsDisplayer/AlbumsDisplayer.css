@@ -4,7 +4,7 @@
     top: 56px;
     width: 20vh;
     height: 94vh;
-    overflow-y: scroll;
+    overflow-y: auto;
     /*padding: 0 16px 10px 16px;*/
     box-sizing: border-box;
     flex: 1;
