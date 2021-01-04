@@ -19,7 +19,6 @@ const PhotoDisplayer = props => {
     setIsLoading(true);
     axios.get( process.env.REACT_APP_BACK_URL + '/albums/' + albumId + '/photos?id=' + imageId)
       .then( response => {
-        console.log(response.data);
         if(response.data[0] === undefined) {
           setHasError("Invalid image path");
         } else {

@@ -1,10 +1,8 @@
 import React, {Suspense} from 'react';
 
 import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
-// import ThumbnailsDisplayer from "../../containers/ThumbnailsDisplayer/ThumbnailsDisplayer";
 import AlbumsDisplayer from "../../containers/AlbumsDisplayer/AlbumsDisplayer";
 import {Route, Switch} from "react-router-dom";
-// import PhotoDisplayer from "../../containers/PhotoDisplayer/PhotoDisplayer";
 
 import './PhotoBrowser.css';
 import AlbumsWelcome from "./AlbumsWelcome/AlbumsWelcome";
