@@ -36,7 +36,7 @@ const AlbumsDisplayer = props => {
         setIsLoadingAlbums(false);
       }).catch((error) => setHasError(error.message));
 
-  }, []);
+  }, [history]);
 
   const changeAlbum = (clickedAlbumId) => {
     const currentAlbums = albums;
