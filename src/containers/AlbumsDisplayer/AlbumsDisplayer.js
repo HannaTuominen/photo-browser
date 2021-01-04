@@ -51,7 +51,7 @@ const AlbumsDisplayer = props => {
   const clearError = () => {
     setHasError(false);
     setIsLoadingAlbums(false);
-    history.push("/gallery/albums");
+    history.push("/");
   };
 
   return (

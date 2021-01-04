@@ -37,7 +37,7 @@ const PhotoDisplayer = props => {
   const clearError = () => {
     setHasError(false);
     setIsLoading(false);
-    props.history.push("/gallery/albums/" + albumId);
+    props.history.push("/");
   };
 
   return (
